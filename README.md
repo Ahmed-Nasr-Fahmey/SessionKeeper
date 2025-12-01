@@ -276,6 +276,7 @@ lib/ or src/
 ### Onboarding & Splash
 
 <img src="https://github.com/user-attachments/assets/a15e8ceb-ce46-4d30-bf59-5be1d1ef8f98" alt="SessionKeeper Splash Screen" width="250"/>
+</br>
 <img src="https://github.com/user-attachments/assets/10946943-6cf2-4ff4-916a-833531c40acd" alt="SessionKeeper Splash Screen" width="250"/>
 <img src="https://github.com/user-attachments/assets/b226dfdd-2bce-4714-ae01-735227f5da56" alt="SessionKeeper Splash Screen" width="250"/>
 <img src="https://github.com/user-attachments/assets/08e31463-5ee4-43bb-aa07-67cce3c9c0ed" alt="SessionKeeper Splash Screen" width="250"/>
