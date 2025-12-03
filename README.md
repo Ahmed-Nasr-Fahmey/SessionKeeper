@@ -264,6 +264,19 @@ SessionKeeper follows **Clean Architecture** combined with **feature‑first mod
 
 ---
 
+## 🧪 Testing
+
+The project includes a comprehensive testing strategy to ensure code quality and reliability:
+
+### Test Structure
+
+- **Unit Tests**: Testing individual functions, use cases, and business logic
+- **Widget Tests**: Testing UI components and user interactions
+- **Integration Tests**: End-to-end testing of complete features
+- **Repository Tests**: Testing data layer implementations
+- **BLoC Tests**: Testing state management and business logic flows
+
+
 ## 📁 Folder Structure
 
 ```
