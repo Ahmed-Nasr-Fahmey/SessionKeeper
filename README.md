@@ -1,12 +1,15 @@
-## 🎲 SessionKeeper - D&D Campaign Companion
+# 🎲 SessionKeeper - D&D Campaign Companion
 
 <div align="center">
 
 **A European-focused mobile companion app for Dungeons & Dragons campaigns, with automatic summaries, campaign wiki, and AI-powered insights.**
 
 [![Platform](https://img.shields.io/badge/Platform-iOS_&_Android-blue.svg)]()
+
 [![Category](https://img.shields.io/badge/Category-Tabletop_RPG_Companion-purple.svg)]()
+
 [![License](https://img.shields.io/badge/License-Private-red.svg)]()
+
 [![Region](https://img.shields.io/badge/Market-Europe-green.svg)]()
 
 [Features](#-features) • [Architecture](#-architecture) • [Tech Stack](#-tech-stack) • [Folder Structure](#-folder-structure) • [Download](#-download--installation) • [Screenshots](#-screenshots)
@@ -18,6 +21,7 @@
 ## 📱 Project Overview
 
 **SessionKeeper** is a mobile application designed for tabletop RPG groups, especially **Dungeons & Dragons 5e** players in the **European market**.  
+
 The app records your sessions, processes audio in the cloud, and automatically turns your game into structured summaries, session logs, and a living campaign wiki.
 
 While the party is derailing the DM’s carefully crafted plot, SessionKeeper quietly keeps perfect notes in the background.
@@ -45,17 +49,43 @@ Get SessionKeeper on your mobile device:
 ### 📱 Available on
 
 [![App Store](https://img.shields.io/badge/Download_on_App_Store-0D96F6?style=for-the-badge&logo=app-store&logoColor=white)](https://apps.apple.com/app/sessionkeeper/id6737173822)
+
 [![Google Play Store](https://img.shields.io/badge/Download_on_Google_Play-3DDC84?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=com.ga.sessionkeeper)
 
 ### 📊 App Information
 
-| Detail        | iOS                     | Android            |
-|--------------|-------------------------|--------------------|
-| **Version**  | 1.1.1 | 1.1.1 |
-| **Size**     | ~109 MB                 | ~80 MB  |
-| **Language** | English                 | English            |
+| Detail | iOS | Android |
+|--------|-----|---------|
+| **Version** | 1.1.1 | 1.1.1 |
+| **Size** | ~109 MB | ~80 MB |
+| **Language** | English | English |
 
 </div>
+
+---
+
+## 🌍 Environments & Flavors
+
+SessionKeeper ships with three build flavors to cover the full lifecycle:
+
+- **Development (`development`)** – Local builds with debug tooling, dev Firebase project, and stubbed payments.
+- **Staging (`staging`)** – QA/UAT builds wired to staging services for pre-release validation.
+- **Production (`production`)** – Store-ready builds with hardened configs. **Firebase Analytics** and **Firebase Crashlytics** are enabled **only** on the production flavor to keep telemetry clean and compliant with GDPR expectations.
+
+Every flavor has its own bundle identifiers, Firebase configs, API keys, RevenueCat environments, and notification topics.
+
+---
+
+## 🔄 CI/CD Pipeline
+
+- **Android**
+  - **GitHub Actions** workflows trigger on pushes to dedicated branches (e.g., `development`, `staging`, `production`).
+  - The workflow invokes **Fastlane**, runs automated checks, builds the matching flavor, signs artifacts, and uploads them to **Firebase App Distribution** for testers.
+
+- **iOS**
+  - **Codemagic** handles scheme-based builds for every flavor, manages code signing, runs tests, and distributes builds to TestFlight or internal testers.
+
+This setup ensures consistent, reproducible releases with minimal manual intervention for both platforms.
 
 ---
 
@@ -100,8 +130,8 @@ Get SessionKeeper on your mobile device:
 
 ### Analytics & Crash Reporting
 
-- **Firebase Analytics** – Screen views, feature usage, retention and funnel tracking  
-- **Firebase Crashlytics** – Crash reports and non‑fatal error monitoring  
+- **Firebase Analytics** – Screen views, feature usage, retention and funnel tracking (production flavor only)  
+- **Firebase Crashlytics** – Crash reports and non‑fatal error monitoring (production flavor only)  
 
 ### Local & Secure Storage
 
@@ -125,7 +155,7 @@ Get SessionKeeper on your mobile device:
 
 SessionKeeper follows **Clean Architecture** combined with **feature‑first modularization**, long‑running recording, and AI features. The goal is to keep **Presentation**, **Domain**, and **Data** layers clearly separated so that features (Campaigns, Sessions, Wiki, Assistant, Subscriptions) are easy to evolve and test.
 
-```text
+```
 ┌─────────────────────────────────────┐
 │          Presentation Layer        │
 │  (UI, Screens, State Management)   │
@@ -166,7 +196,7 @@ SessionKeeper follows **Clean Architecture** combined with **feature‑first mod
   - Firebase (Firestore / RTDB / Storage / Auth / Cloud Functions) for campaign content, audio chunks, and user accounts  
   - Assimply AI APIs for ingesting chunk references, generating transcripts, performing speaker diarization, and producing summaries, highlights, and achievements  
   - RevenueCat APIs for tracking subscription entitlements across app stores  
-  - OneSignal / FCM for notification topics and device tokens  
+  - OneSignal for notification topics and device tokens  
 - **Local Data Sources**: `shared_preferences` and `flutter_secure_storage` for lightweight caching, tokens, user settings, and basic offline data  
 
 ---
@@ -236,8 +266,7 @@ SessionKeeper follows **Clean Architecture** combined with **feature‑first mod
 
 ## 📁 Folder Structure
 
-
-```text
+```
 lib/ or src/
 ├── core/                          # Shared core functionality (theme, routing, utils)
 │   ├── api/                       # API config and endpoints
@@ -263,13 +292,12 @@ lib/ or src/
 │   ├── settings/                  # Recording prefs, notifications, privacy
 │   └── profile/                   # User profile & account management
 │
-└── main.dart /                    # App entry point & root widget
+└── main.dart                      # App entry point & root widget
 ```
 
 ---
 
 ## 📸 Screenshots
-
 
 <div align="center">
 
@@ -297,7 +325,6 @@ lib/ or src/
 <img src="https://github.com/user-attachments/assets/6ae03762-c7b1-437e-bde7-a2760b9cccaf" alt="Campaign Activity tab with recent updates" width="250"/>
 <img src="https://github.com/user-attachments/assets/e58fcaa9-02b3-49b0-99cf-1740a5aeefa4" alt="Campaign Sessions tab with session list" width="250"/>
 <img src="https://github.com/user-attachments/assets/2c779c41-722b-4771-ae7f-7798772c3e57" alt="Campaign Wiki tab with categories and entries" width="250"/>
-
 
 ### Wiki & Details
 
@@ -332,5 +359,7 @@ lib/ or src/
 ---
 
 </div>
+
+[⬆ Back to Top](#-sessionkeeper---dd-campaign-companion)
 
 
